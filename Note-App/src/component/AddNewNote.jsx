@@ -19,7 +19,7 @@ function AddNewNote({onAddNote}) {
             title: title,
             description: description,
             completed: false,
-            createAt: Date.now().toISOString(),
+            createAt: Date.now().toISOString,
         };
 
         onAddNote(newNote);
