@@ -1,13 +1,13 @@
 import NoteItem from "./NoteItem"
 
-function NoteList({notes, onDeletNote}) {
+function NoteList({notes, onDeletNote, onCompleteNote}) {
     
 
   return (
     <div className="note-list">
         {
             notes.map((note) => (
-               <NoteItem key={note.id} note={note} onDeletNote={onDeletNote}/>
+               <NoteItem key={note.id} note={note} onDeletNote={onDeletNote} onCompleteNote={onCompleteNote}/>
             ))
         }
     </div>
