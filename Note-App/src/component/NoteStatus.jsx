@@ -1,3 +1,4 @@
+import Message from "./Message";
 
 
 function NoteStatus({notes}) {
@@ -8,9 +9,9 @@ function NoteStatus({notes}) {
 
     if(!allNotes){
         return (
-            <span>
-              ℹ️ <span>No Notes has already been added.</span> <span>🧐</span>
-            </span>
+            <Message>
+              <h3>No Notes has already been added<span>🧐</span></h3>
+            </Message>
           );
     }
 

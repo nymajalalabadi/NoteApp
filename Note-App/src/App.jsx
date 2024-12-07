@@ -8,7 +8,7 @@ import NoteHeader from "./component/NoteHeader";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  const[sortBy, setSortBy] = useState("latest")
+  const [sortBy, setSortBy] = useState("latest")
 
   const handleNotes = (newNote) => {
     setNotes((prevNotes) => [...prevNotes, newNote]);
@@ -41,35 +41,14 @@ function App() {
     setNotes((prevNotes) => prevNotes.map((note) => note.id == noteId ? {...note, completed: ! note.completed} : note));
   };
 
-  const HandleOnSort = (e) => {
-    setSortBy(e.target.value)
-  }
-
-  let sortedNotes = notes; 
-
-  if(sortBy === "earliest")
-  {
-    sortedNotes = [...notes].sort((a,b) => new Date(a.createAt) - new Date(b.createAt));
-  }
-
-  if(sortBy === "latest")
-  {
-    sortedNotes = [...notes].sort((a,b) => new Date(b.createAt) - new Date(a.createAt));
-  }
-
-  if(sortBy === "completed")
-  {
-    sortedNotes = [...notes].sort((a, b) => Number(a.completed) - Number(b.completed));
-  }
-
   return (
   <div className="container">
-    <NoteHeader notes={notes} sortBy={sortBy} onSort={HandleOnSort}/>
+    <NoteHeader notes={notes} sortBy={sortBy} onSort={(e) => setSortBy(e.target.value)} />
     <div className="note-app">
       <AddNewNote onAddNote={handleNotes}/>
       <div className="note-container">
         <NoteStatus notes={notes}/>
-        <NoteList notes={sortedNotes} onDeletNote={handleDeletNote} onCompleteNote={handleCompleteNote}/>
+        <NoteList notes={notes} sortBy={sortBy} onDeletNote={handleDeletNote} onCompleteNote={handleCompleteNote}/>
       </div>
     </div>
   </div>);
