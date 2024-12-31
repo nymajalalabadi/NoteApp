@@ -10,7 +10,7 @@ function NoteStatus({notes}) {
     if(!allNotes){
         return (
             <Message>
-              <h3>No Notes has already been added<span>🧐</span></h3>
+              <span>No Notes has already been added<span>🧐</span></span>
             </Message>
           );
     }
