@@ -1,19 +1,23 @@
+import { useNotes } from "../context/NotesContext";
 import Message from "./Message";
 
 
-function NoteStatus({notes}) {
+function NoteStatus() 
+{
+  const notes = useNotes();
 
-    const allNotes = notes.length
-    const completedNotes = notes.filter(n => n.completed).length;
-    const unCompletedNotes = allNotes - completedNotes
+  const allNotes = notes.length
+  const completedNotes = notes.filter(n => n.completed).length;
+  const unCompletedNotes = allNotes - completedNotes
 
-    if(!allNotes){
-        return (
-            <Message>
-              <span>No Notes has already been added<span>🧐</span></span>
-            </Message>
-          );
-    }
+  if(!allNotes)
+  {
+    return (
+      <Message>
+        <span>No Notes has already been added<span>🧐</span></span>
+      </Message>
+    );
+  }
 
   return (
     <ul className="note-status">
